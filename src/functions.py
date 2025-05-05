@@ -271,15 +271,14 @@ def text_to_children(text):
 
 
 
+ 
 def extract_title(markdown):
     if not markdown.startswith('# '):
         raise Exception("No Header Found")
-    header = markdown.strip("# ")
+    # Get the first line
+    first_line = markdown.split('\n')[0]
+    # Remove the '# ' prefix
+    header = first_line[2:]
     return header
-    
-    
 
-def generate_page(from_path, template_path, dest_path):
-    print(f"Generating page from {from_path} to {dest_path} using {template_path}")
-    
 

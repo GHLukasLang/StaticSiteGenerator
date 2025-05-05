@@ -60,11 +60,15 @@ def generate_page(from_path, template_path, dest_path, basepath):
     title = extract_title(md_origin)
 
     template_filled_prod = template.replace("{{ Title }}", title).replace("{{ Content }}", html_content)
+    
+    
+    # Replace double-quoted attributes
     template_filled_prod = template_filled_prod.replace('href="/', f'href="{basepath}')
     template_filled_prod = template_filled_prod.replace('src="/', f'src="{basepath}')
-    
-    #template_filled_prod = template_filled_prod.replace('<link href="/', f'<link href="{basepath}')
 
+    # Also replace single-quoted attributes
+    template_filled_prod = template_filled_prod.replace("href='/", f"href='{basepath}")
+    template_filled_prod = template_filled_prod.replace("src='/", f"src='{basepath}")
     if not os.path.dirname(dest_path):
         os.makedirs(dest_path)
     

@@ -63,7 +63,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
     template_filled_prod = template_filled_prod.replace('href="/', f'href="{basepath}')
     template_filled_prod = template_filled_prod.replace('src="/', f'src="{basepath}')
     
-    #template_filled_prod = template_filled.replace("href='/", f"href='{basepath}").replace("src='/", f"src='{basepath}")
+    #template_filled_prod = template_filled_prod.replace('<link href="/', f'<link href="{basepath}')
 
     if not os.path.dirname(dest_path):
         os.makedirs(dest_path)
